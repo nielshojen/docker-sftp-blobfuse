@@ -1,5 +1,7 @@
 FROM atmoz/sftp:debian
 
+ENV AZURE_MOUNT_POINT="/home"
+
 RUN apt-get update \
     && apt-get install -y wget apt-utils \
     && wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb \
