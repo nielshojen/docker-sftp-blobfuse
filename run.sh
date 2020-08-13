@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 set -euo pipefail
@@ -12,6 +11,9 @@ rm -rf ${AZURE_MOUNT_POINT}
 mkdir -p ${AZURE_MOUNT_POINT}
 
 blobfuse ${AZURE_MOUNT_POINT} --use-https=true --tmp-path=/tmp/blobfuse/${AZURE_STORAGE_ACCOUNT} --container-name=${AZURE_STORAGE_ACCOUNT_CONTAINER} -o allow_other
+
+# run the command passed to us
+exec "$@"
 
 ## shellcheck disable=2154
 #trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
