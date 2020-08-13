@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends fuse blobfuse libcurl3-gnutls libgnutls30 \
     && rm -rf /var/lib/apt/lists/*
     
-COPY mount-blobfuse.sh /
-RUN chmod +x /mount-blobfuse.sh
+COPY run.sh /
+RUN chmod +x /run.sh
 
 ENTRYPOINT ["/run.sh"]
